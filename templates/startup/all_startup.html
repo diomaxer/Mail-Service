@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All StartUPs</title>
+</head>
+<body>
+<table border="1">
+   <caption>Стартапы</caption>
+   <tr>
+    <th>Название</th>
+    <th>Цена</th>
+    <th>Индустрия</th>
+    <th>Стадия</th>
+   </tr>
+{% block content %}
+    {% for object in obj %}
+    <tr><td><a href="{{ object.get_url }}">{{ object.title }}</a></td>
+        <td>{{ object.price }}</td>
+        <td>{{ object.industry }}<br></td>
+        <td>{{ object.stage }}<br></td>
+    {% endfor %}
+{% endblock %}
+</table>
+<a class="link" href="{% url 'start_page' %}">Вернуться домой</a>
+</body>
+</html>

@@ -7,11 +7,11 @@ class InvestorAdmin(admin.ModelAdmin):
 
 
 class MailAdmin(admin.ModelAdmin):
-    list_display = ('start_up', 'destination', 'sent', 'sent_date')
+    list_display = ('start_up', 'destination', 'sent', 'sent_date',)
 
 
 class StartUPAdmin(admin.ModelAdmin):
-    list_display = ('title', 'price', 'industry', 'info',)
+    list_display = ('title', 'price', 'industry', 'info', 'stage',)
 
 
 admin.site.register(Industry)

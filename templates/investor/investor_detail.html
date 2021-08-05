@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ obj.name }}</title>
+</head>
+<body>
+{% block content %}
+<p>Имя: {{ obj.name }}</p>
+<p>Email: {{ obj.email }}</p>
+<p>Ценовой дипозон: {{ obj.low_price }} - {{ obj.high_price }}</p>
+<p>Стадия: {% for stage in obj.stage.all %}
+    {{ stage.name }},
+    {% endfor %}</p>
+<p>Все индустрии: {% for industry in obj.industry.all %}
+    {{ industry.name }},
+    {% endfor %}</p>
+<p>Предпочитаемая индустрия:     {% for industry_prefer in obj.industry_prefer.all %}
+    {{ industry_prefer.name }},
+    {% endfor %}</p>
+{% endblock %}
+
+{% block mail %}
+<table border="1px">
+    <caption>Неотправленные письма</caption>
+    <tr><th>Стартап</th><th>Дата отправки</th><th>Предпочитаемая Индустрия</th></tr>
+
+        {% for letter in mail %}
+            {% if letter.sent != True %}
+            <tr><td>{{ letter.start_up }}</td><td>{{ letter.sent_date }}</td><td>{{ letter.industry_prefer }}</td></tr>
+        {% endif %}
+    {% endfor %}
+</table>
+<br>
+<table border="1px">
+    <caption>Отправленные письма</caption>
+    <tr><th>Стартап</th><th>Дата отправки</th><th>Предпочитаемая Индустрия</th></tr>
+    {% for letter in mail %}
+        {% if letter.sent == True %}
+        <tr><td>{{ letter.start_up }}</td><td>{{ letter.sent_date }}</td><td>{{ letter.industry_prefer }}</td></tr>
+        {% endif %}
+    {% endfor %}
+</table>
+{% endblock %}
+<br>
+<a class="link" href="{% url 'start_page' %}">Вернуться домой</a>
+</body>
+</html>

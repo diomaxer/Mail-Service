@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ obj.title }}</title>
+</head>
+<body>
+{% block content %}
+<p>Название: {{ obj.title }}</p>
+<p>Цена: {{ obj.price }}</p>
+<p>Индустрия: {{ obj.industry }}</p>
+<p>Начало: {{ obj.stage }}</p>
+<p>Тизер: {{ obj.info }}</p>
+{% endblock %}
+<a class="link" href="{% url 'start_page' %}">Вернуться домой</a>
+</body>
+</html>

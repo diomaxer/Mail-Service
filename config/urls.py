@@ -16,6 +16,21 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from matching.views import (start_page_view,
+                            investor_create_view,
+                            all_investors_list,
+                            all_investors_detail_view,
+                            startup_create_view,
+                            all_startups_list,
+                            all_startups_detail_view,)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', start_page_view, name='start_page'),
+    path('add_investor/', investor_create_view, name='add_investor'),
+    path('all_investors/', all_investors_list, name='all_investors'),
+    path('all_investors/<int:id>/', all_investors_detail_view, name='all_investors_detail'),
+    path('add_startup/', startup_create_view, name='add_startup'),
+    path('all_startups/', all_startups_list, name='all_startups'),
+    path('all_startups/<int:id>/', all_startups_detail_view, name='all_startups_detail'),
 ]

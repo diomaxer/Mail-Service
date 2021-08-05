@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All Investors</title>
+</head>
+<body>
+<table border="1">
+   <caption>Инвесторы</caption>
+   <tr>
+    <th>Имя</th>
+    <th>EMAIL</th>
+    <th>Ценовой дипозон</th>
+    <th>Стадия</th>
+    <th>Идустрия</th>
+    <th>Индустрию Пред</th>
+   </tr>
+{% block content %}
+    {% for object in obj %}
+    <tr><td><a href="{{ object.get_url }}">{{ object.name }}</a></td><td>{{ object.email }}</td><td>{{ object.low_price }} - {{ object.high_price }}</td>
+        <td>{% for stage in object.stage.all %}
+            {{ stage.name }}<br>
+            {% endfor %}</td>
+        <td>{% for industry in object.industry.all %}
+            {{ industry.name }}<br>
+            {% endfor %}</td>
+        <td>{% for industry_prefer in object.industry_prefer.all %}
+            {{ industry_prefer.name }}<br>
+            {% endfor %}</td></tr>
+    {% endfor %}
+{% endblock %}
+</table>
+<a class="link" href="{% url 'start_page' %}">Вернуться домой</a>
+</body>
+</html>

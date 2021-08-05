@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mail Service</title>
+</head>
+<body>
+{% block content %}
+  <a href="{% url 'add_investor' %}">Добавить Инвестора</a>  |
+  <a href="{% url 'all_investors' %}">Все инвесторы</a><br><br>
+  <a href="{% url 'add_startup' %}">Добавить Стартап</a>  |
+  <a href="{% url 'all_startups' %}">Все Стартапы</a><br><br>
+{% endblock %}
+</body>
+</html>
